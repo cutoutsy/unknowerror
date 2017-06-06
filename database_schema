@@ -1,0 +1,8 @@
+PostTags
+    PostId, TagId
+    这个表应该是个中间表，用来维护两张表
+
+PostTypes
+    id, Name
+    这个表值是固定的，1表示question, 2表示answer等
+
