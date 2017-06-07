@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 
 <!DOCTYPE html>
 <html>
@@ -17,8 +22,9 @@
 <div class="container">
     <div id="content" class="snippet-hidden">
         <div id="mainbar" class="ask-mainbar">
-            <form id="post-form" class="post-form" action="#" method="post">
+            <form id="post-form" class="post-form" action="<%=path%>/posts/post_newQuestion.action" method="post">
                 <input type="hidden" name="qualityBanWarningShown" value="False">
+                <input type="hidden" name="postTypeId" value="1">
                 <div id="question-form">
                     <div style="position: relative;">
                         <div class="form-item ask-title">
@@ -38,7 +44,7 @@
 
                     <div class="wmd-panel">
                         <div id="wmd-button-bar" class="wmd-button-bar"></div>
-                        <textarea class="wmd-input" id="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length></textarea>
+                        <textarea class="wmd-input" id="wmd-input" name="body" cols="92" rows="15" tabindex="101" data-min-length></textarea>
                         <div class="grippie" style="margin-right: 0px;"></div>
                     </div>
 
@@ -48,24 +54,24 @@
 
                     <script type="text/javascript">
                         (function () {
-                            var converter2 = new Markdown.Converter();
+                            var converter = new Markdown.Converter();
 
-                            converter2.hooks.chain("preConversion", function (text) {
+                            converter.hooks.chain("preConversion", function (text) {
                                 return text.replace(/\b(a\w*)/gi, "*$1*");
                             });
 
-                            converter2.hooks.chain("plainLinkText", function (url) {
+                            converter.hooks.chain("plainLinkText", function (url) {
                                 return "This is a link to " + url.replace(/^https?:\/\//, "");
                             });
 
                             var help = function () { alert("Do you need help?"); }
                             var options = {
                                 helpButton: { handler: help },
-                                strings: { quoteexample: "whatever you're quoting, put it right here" }
+                                strings: { quoteexample: "无论你引用了什么, 请放到这里" }
                             };
-                            var editor2 = new Markdown.Editor(converter2, "", options);
+                            var editor = new Markdown.Editor(converter, "", options);
 
-                            editor2.run();
+                            editor.run();
                         })();
                     </script>
 
@@ -76,7 +82,7 @@
                                 <input id="tagnames" name="tagnames" type="text" size="60" value tabindex="103" placeholder="at lease one tag, max 5 tags" style="display: none;">
                                 <div class="tag-editor" style="width: 658px; height: 35px;">
                                     <span></span>
-                                    <input type="text" tabindex="103" placeholder="at least one tag, max five tags" style="width: 650px;">
+                                    <input type="text" name="tags" tabindex="103" placeholder="at least one tag, max five tags" style="width: 650px;">
                                     <span></span>
                                 </div>
                             </div>
