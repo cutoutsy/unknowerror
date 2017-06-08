@@ -12,10 +12,20 @@
     <script type="text/javascript" src="/js/Markdown.Converter.js"></script>
     <script type="text/javascript" src="/js/Markdown.Sanitizer.js"></script>
     <script type="text/javascript" src="/js/Markdown.Editor.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/all.css">
     <title>提问</title>
 </head>
 <body class="ask-page new-topbar">
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#submit-button").click(function(){
+            $("#bodyvalue").attr("value", $("#wmd-preview").html());
+        });
+    });
+
+</script>
 
 <%@ include file="header.jsp"%>
 
@@ -25,7 +35,7 @@
             <form id="post-form" class="post-form" action="<%=path%>/posts/post_newQuestion.action" method="post">
                 <input type="hidden" name="qualityBanWarningShown" value="False">
                 <input type="hidden" name="postTypeId" value="1">
-                <input type="hidden" name="bodyHtml">
+                <input id="bodyvalue" type="hidden" name="body">
                 <div id="question-form">
                     <div style="position: relative;">
                         <div class="form-item ask-title">
@@ -45,7 +55,7 @@
 
                     <div class="wmd-panel">
                         <div id="wmd-button-bar" class="wmd-button-bar"></div>
-                        <textarea class="wmd-input" id="wmd-input" name="body" cols="92" rows="15" tabindex="101" data-min-length></textarea>
+                        <textarea class="wmd-input" id="wmd-input" cols="92" rows="15" tabindex="101" data-min-length></textarea>
                         <div class="grippie" style="margin-right: 0px;"></div>
                     </div>
 
