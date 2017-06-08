@@ -7,6 +7,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
 }
 
+i, em{
+    font-style: italic;
+}
+
+b, strong{
+    font-weight: bold;
+}
 body{
     min-height: 100%;
     display: -webkit-flex;
@@ -1558,4 +1565,76 @@ input[type="text"], textarea:not(.wmd-input), input[type="url"], input[type="dat
 
 .so-header .my-profile .-badges>span{
     padding-left: 8px;
+}
+
+.post-text pre, .wmd-preview pre{
+    word-wrap: normal;
+}
+
+pre{
+    margin-bottom: 1em;
+    padding: 5px;
+    padding-bottom: 20px !ie7;
+    width: auto;
+    width: 650px !ie7;
+    max-height: 600px;
+    overflow: auto;
+    font-family: Menlo, Monaco;
+    font-size: 13px;
+    background-color: #eff0f1;
+}
+
+.post-text code,
+.wmd-preview code{
+    font-size: 13px;
+}
+
+pre code{
+    white-space: inherit;
+    padding: 0;
+}
+
+code{
+    font-family: Menlo, Monaco;
+    background-color: #eff0f1;
+}
+
+.post-text h2, .wmd-preview h2, .post-text h2 code, .wmd-preview h2 code{
+    font-size: 19px;
+}
+
+.wmd-preview > ul, ol, li{
+    margin: 0;
+    padding: 0;
+}
+.wmd-preview> ol, ul{
+    list-style: none;
+}
+
+.wmd-preview ol{
+    list-style-type: decimal;
+}
+
+.wmd-preview ul{
+    list-style-type: disc;
+}
+
+.wmd-preview>ul, ol{
+    margin-left: 30px;
+    margin-bottom: 1em;
+}
+
+blockquote{
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #FFF8DC;
+    border-left: 2px solid #ffeb8e;
+}
+
+blockquote, q{
+    quotes: none;
+}
+
+blockquote *:last-child{
+    margin-bottom: 0;
 }
