@@ -25,6 +25,7 @@
             <form id="post-form" class="post-form" action="<%=path%>/posts/post_newQuestion.action" method="post">
                 <input type="hidden" name="qualityBanWarningShown" value="False">
                 <input type="hidden" name="postTypeId" value="1">
+                <input type="hidden" name="bodyHtml">
                 <div id="question-form">
                     <div style="position: relative;">
                         <div class="form-item ask-title">
