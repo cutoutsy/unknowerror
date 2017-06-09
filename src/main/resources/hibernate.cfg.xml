@@ -12,7 +12,8 @@
         <property name="connection.characterEncoding">utf8</property>
         <!-- <property name="hibernate.current_session_context_class">thread</property> -->
 
-        <mapping resource="entity/User.hbm.xml"/>
+        <mapping resource="hbm/User.hbm.xml"/>
         <mapping resource="hbm/PostType.hbm.xml"/>
+        <mapping resource="hbm/Post.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -12,13 +12,6 @@ import java.util.List;
 
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
 
-    public String addUser(User user) {
-//        String success = "";
-        getHibernateTemplate().save(user);
-
-        return "success";
-    }
-
     //登录的方法
     public User loginUser(User user) {
         HibernateTemplate hibernateTemplate = this.getHibernateTemplate();

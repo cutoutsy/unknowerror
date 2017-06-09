@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.Post" table="Posts">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+
+        <property name="postTypeId"></property>
+        <property name="acceptedAnswerId"></property>
+        <property name="parentId"></property>
+        <property name="creationDate"></property>
+        <property name="deletionDate"></property>
+        <property name="score"></property>
+        <property name="viewCount"></property>
+        <property name="body"></property>
+        <property name="ownerUserId"></property>
+        <property name="ownerDisplayName"></property>
+        <property name="lastEditDate"></property>
+        <property name="lastActivityDate"></property>
+        <property name="title"></property>
+        <property name="tags"></property>
+        <property name="answerCount"></property>
+        <property name="commentCount"></property>
+        <property name="favoriteCount"></property>
+        <property name="closedDate"></property>
+        <property name="communityOwnedDate"></property>
+    </class>
+</hibernate-mapping>
