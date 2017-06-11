@@ -10,10 +10,16 @@ import service.PostService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PostAction extends ActionSupport implements ModelDriven<Post>{
     private PostService postService;
+    private List<Post> newPost = new ArrayList<Post>();
 
+    public List<Post> getNewPost() {
+        return newPost;
+    }
     public void setPostService(PostService postService) {
         this.postService = postService;
     }
@@ -44,5 +50,13 @@ public class PostAction extends ActionSupport implements ModelDriven<Post>{
         post.setFavoriteCount(0);
         postService.saveQuestion(post);
         return "newQuestion_success";
+    }
+
+    //在首页显示最新问题
+    public String showNewQuestion(){
+        newPost = postService.getNewPost();
+        System.out.println("Size:" + newPost.size());
+        System.out.println(newPost.get(0).getBody());
+        return "showNewQuestion_success";
     }
 }

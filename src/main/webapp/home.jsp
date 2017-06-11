@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -10,7 +10,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src=""></script>
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $.get("/post/post_showNewQuestion.action", function (data, status) {
+           });
+        });
+    </script>
     <link rel="stylesheet" type="text/css" href="/css/all.css">
     <title>Unknow Error</title>
 </head>
@@ -65,6 +71,39 @@
                             </div>
                         </div>
                     </div>
+                    <s:iterator value="newPost" var="post">
+                        <div class="question-summary narrow" id="question-summary-36112979">
+                            <div onclick="window.location.href='./single_question.jsp'" class="cp">
+                                <div class="votes">
+                                    <div class="mini-counts"><span title="0 votes"><s:property value="#post.viewCount" /></span></div>
+                                    <div>votes</div>
+                                </div>
+                                <div class="status unanswered">
+                                    <div class="mini-counts"><span title="0 answers">0</span></div>
+                                    <div>answers</div>
+                                </div>
+                                <div class="views">
+                                    <div class="mini-counts"><span title="3 views">3</span></div>
+                                    <div>views</div>
+                                </div>
+                            </div>
+                            <div class="summary">
+                                <h3><a href="./single_question.jsp" class="question-hyperlink"><s:property value="#post.title" /></a> </h3>
+                                <div class="tags">
+                                    <a href="./php" class="post-tag" title rel="tag"><s:property value="#post.tags" /></a>
+                                    <a href="./php" class="post-tag" title rel="tag">jquery</a>
+                                    <a href="./php" class="post-tag" title rel="tag">html</a>
+                                    <a href="./php" class="post-tag" title rel="tag">design</a>
+                                    <a href="./php" class="post-tag" title rel="tag">architecture</a>
+                                </div>
+                                <div class="started">
+                                    <a href="#" class="started-link">asked<span title="2017-06-11 12:45:49Z" class="relativetime">1 min ago</span></a>
+                                    <a href="/users/"><s:property value="#post.ownerDisplayName" /></a>
+                                    <span class="reputation-score" title="reputation score" dir="1tr">1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </s:iterator>
                 </div>
             </div>
         </div>

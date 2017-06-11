@@ -4,6 +4,8 @@ import dao.PostDao;
 import entity.Post;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 public class PostService {
 
@@ -15,5 +17,9 @@ public class PostService {
 
     public boolean saveQuestion(Post post){
         return this.postDao.saveQuestion(post);
+    }
+
+    public List<Post> getNewPost() {
+        return this.postDao.getNewPosts();
     }
 }
