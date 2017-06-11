@@ -9,7 +9,7 @@
             </a>
             <nav class="navigation">
                 <ol class="-list">
-                    <li class="-item _current"><a id="nav-question" href="./question" class="-link js-gps-track">问题</a></li>
+                    <li class="-item _current"><a id="nav-question" href="./question.jsp" class="-link js-gps-track">问题</a></li>
                     <li class="-item"><a id="nav-jobs" href="./question" class="-link js-gps-track">工作</a></li>
                     <li class="-item"><a id="nav-docs" href="./question" class="-link js-gps-track">文档</a></li>
                     <li class="-item"><a id="nav-tags" href="./question" class="-link js-gps-track">标签</a></li>
