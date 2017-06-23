@@ -16,7 +16,7 @@
     <!-- 配置c3p0连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3307/ssh"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3307/unknowerror"></property>
         <property name="user" value="root"></property>
         <property name="password" value="123456"></property>
     </bean>

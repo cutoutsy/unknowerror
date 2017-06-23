@@ -55,8 +55,8 @@ public class PostAction extends ActionSupport implements ModelDriven<Post>{
     //在首页显示最新问题
     public String showNewQuestion(){
         newPost = postService.getNewPost();
-        System.out.println("Size:" + newPost.size());
-        System.out.println(newPost.get(0).getBody());
+//        System.out.println("Size:" + newPost.size());
+//        System.out.println(newPost.get(1).getBody());
         return "showNewQuestion_success";
     }
 }

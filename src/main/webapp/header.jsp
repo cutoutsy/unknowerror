@@ -112,8 +112,8 @@
                     </ol>
                 </nav>
                 <div class="-ctas">
-                    <a href="./login.jsp" class="login-link btn-clear" rel="nofollow">登录</a>
-                    <a href="./logup.jsp" class="login-link btn" rel="nofollow">注册</a>
+                    <a href="/login.jsp" class="login-link btn-clear" rel="nofollow">登录</a>
+                    <a href="/logup.jsp" class="login-link btn" rel="nofollow">注册</a>
                 </div>
             </div>
         </s:else>
