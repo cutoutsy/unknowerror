@@ -15,6 +15,7 @@
         <action name="post_*" class="postAction" method="{1}">
             <result name="newQuestion_success">/index.jsp</result>
             <result name="showNewQuestion_success">/home.jsp</result>
+            <result name="showOneQuestion_success">/single_question.jsp</result>
         </action>
     </package>
 </struts>

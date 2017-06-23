@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.PostDao;
 import entity.Post;
+import javafx.geometry.Pos;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
@@ -18,5 +19,10 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao{
     public List<Post> getNewPosts() {
         HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
         return (List<Post>) hibernateTemplate.find("from Post");
+    }
+
+    public Post getPostById(String pid) {
+        HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
+        return hibernateTemplate.get(Post.class, Integer.valueOf(pid));
     }
 }

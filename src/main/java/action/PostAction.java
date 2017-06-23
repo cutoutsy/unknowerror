@@ -15,6 +15,7 @@ import java.util.List;
 
 public class PostAction extends ActionSupport implements ModelDriven<Post>{
     private PostService postService;
+    private Post onePost;
     private List<Post> newPost = new ArrayList<Post>();
 
     public List<Post> getNewPost() {
@@ -22,6 +23,10 @@ public class PostAction extends ActionSupport implements ModelDriven<Post>{
     }
     public void setPostService(PostService postService) {
         this.postService = postService;
+    }
+
+    public Post getOnePost() {
+        return onePost;
     }
 
     Post post = new Post();
@@ -55,8 +60,15 @@ public class PostAction extends ActionSupport implements ModelDriven<Post>{
     //在首页显示最新问题
     public String showNewQuestion(){
         newPost = postService.getNewPost();
-//        System.out.println("Size:" + newPost.size());
-//        System.out.println(newPost.get(1).getBody());
         return "showNewQuestion_success";
+    }
+
+    //显示单个问题
+    public String showOneQuestion(){
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String pid = request.getParameter("pid");
+        onePost = postService.getPostById(pid);
+        System.out.println(onePost.getBody());
+        return "showOneQuestion_success";
     }
 }

@@ -1,14 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="./js/Markdown.Converter.js"></script>
-    <script type="text/javascript" src="./js/Markdown.Sanitizer.js"></script>
-    <script type="text/javascript" src="./js/Markdown.Editor.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/all.css">
+    <script type="text/javascript" src="/js/Markdown.Converter.js"></script>
+    <script type="text/javascript" src="/js/Markdown.Sanitizer.js"></script>
+    <script type="text/javascript" src="/js/Markdown.Editor.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/all.css">
     <title>问题题目</title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+//            $(".post-text").firstElementChild.html($(".post-text").firstElementChild.text());
+            $(".post-text:first").html($(".post-text:first").text());
+        });
+    </script>
 </head>
 <body class="question-page new-topbar">
 
@@ -20,7 +28,7 @@
             <link itemprop="image" href="#">
             <div id="question-header">
                 <h1 itemprop="name">
-                    <a href="#" class="question-hyperlink">Google Bigquery Billing Tier not working using python script</a>
+                    <a href="#" class="question-hyperlink"><s:property value="onePost.title" /></a>
                 </h1>
                 <div class="aside-cta" role="navigation" aria-label="ask new question">
                     <a href="./ask_question.jsp" class="btn-outlined">Ask Question</a>
@@ -46,14 +54,7 @@
                             </td>
                             <td class="postcell">
                                 <div>
-                                    <div class="post-text" itemprop="text">
-                                        <p>
-                                            I have on my index page this code snippet, based on this tutorial:
-                                            But it is needed, that the "source.php" is loaded automatically directly after the code in the snippet is loaded, and while the content of the index.php is showned.
-                                            I tried with a set TimeOut function, but wasn't succesfull.
-                                            How to modify the function?
-                                        </p>
-                                    </div>
+                                    <div class="post-text" itemprop="text"><s:property value="onePost.body" /></div>
                                     <div class="post-taglist">
                                         <a href="/question/tagged/javascript" class="post-tag js-gps-track" title="show questions tagged 'javascript'" rel="tag">javascript</a>
                                         <a href="/question/tagged/javascript" class="post-tag js-gps-track" title="show questions tagged 'javascript'" rel="tag">jquery</a>
@@ -81,9 +82,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="user-details">
-                                                        <a href="/users/7977178/quackbrick">
-                                                            QuackBrick
-                                                        </a>
+                                                        <a href="/users/7977178/quackbrick"><s:property value="#post.ownerDisplayName" /></a>
                                                         <div class="-flair">
                                                             <span class="reputation-score" title="reputation score" dir="ltr">1</span>
                                                             <span title="2 bronze badges">

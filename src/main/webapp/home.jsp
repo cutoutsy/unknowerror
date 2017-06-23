@@ -12,11 +12,7 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
-//        window.location.href='/post/post_showNewQuestion.action';
-//        $(document).ready(function () {
-//           $.get("/post/post_showNewQuestion.action", function (data, status) {
-//           });
-//        });
+
     </script>
     <link rel="stylesheet" type="text/css" href="/css/all.css">
     <title>Unknow Error</title>
@@ -74,7 +70,7 @@
                     </div>
                     <s:iterator value="newPost" var="post">
                         <div class="question-summary narrow" id="question-summary-36112979">
-                            <div onclick="window.location.href='./single_question.jsp'" class="cp">
+                            <div onclick="window.location.href='/post/post_showOneQuestion.action?pid=<s:property value="#post.id" />'" class="cp">
                                 <div class="votes">
                                     <div class="mini-counts"><span title="0 votes"><s:property value="#post.viewCount" /></span></div>
                                     <div>votes</div>

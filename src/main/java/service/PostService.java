@@ -22,4 +22,8 @@ public class PostService {
     public List<Post> getNewPost() {
         return this.postDao.getNewPosts();
     }
+
+    public Post getPostById(String pid) {
+        return this.postDao.getPostById(pid);
+    }
 }

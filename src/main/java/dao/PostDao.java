@@ -9,4 +9,6 @@ public interface PostDao {
     public boolean saveQuestion(Post post);
 
     List<Post> getNewPosts();
+
+    Post getPostById(String pid);
 }
