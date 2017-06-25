@@ -15,6 +15,7 @@ import java.util.List;
 
 public class PostAction extends ActionSupport implements ModelDriven<Post>{
     private PostService postService;
+    public String pid;
     private Post onePost;
     private List<Post> newPost = new ArrayList<Post>();
     private List<Post> answers = new ArrayList<Post>();
@@ -37,6 +38,14 @@ public class PostAction extends ActionSupport implements ModelDriven<Post>{
 
     public Post getModel() {
         return post;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String newQuestion(){
@@ -77,7 +86,7 @@ public class PostAction extends ActionSupport implements ModelDriven<Post>{
     //显示单个问题
     public String showOneQuestion(){
         HttpServletRequest request = ServletActionContext.getRequest();
-        String pid = request.getParameter("pid");
+        pid = request.getParameter("pid");
         onePost = postService.getPostById(pid);
         answers = postService.getAnswerPostById(pid);
         return "showOneQuestion_success";
