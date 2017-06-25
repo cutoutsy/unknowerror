@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PostDaoImpl extends HibernateDaoSupport implements PostDao{
 
@@ -18,11 +19,18 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao{
 
     public List<Post> getNewPosts() {
         HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
-        return (List<Post>) hibernateTemplate.find("from Post");
+        List<Post> allPost = (List<Post>) hibernateTemplate.find("from Post");
+        return allPost.stream().filter(post -> post.getPostTypeId()==1).collect(Collectors.toList());
     }
 
     public Post getPostById(String pid) {
         HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
         return hibernateTemplate.get(Post.class, Integer.valueOf(pid));
+    }
+
+    @Override
+    public List<Post> getAnswerPostById(String pid) {
+        HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
+        return (List<Post>) hibernateTemplate.find("from Post p where p.parentId = ?" , Integer.valueOf(pid));
     }
 }

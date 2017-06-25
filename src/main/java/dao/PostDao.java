@@ -11,4 +11,6 @@ public interface PostDao {
     List<Post> getNewPosts();
 
     Post getPostById(String pid);
+
+    List<Post> getAnswerPostById(String pid);
 }

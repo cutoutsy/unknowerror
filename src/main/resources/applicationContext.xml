@@ -34,23 +34,6 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <bean id="userDao" class="dao.impl.UserDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"></property>
-    </bean>
-    <bean id="userService" class="service.UserService">
-        <property name="userDao" ref="userDao"></property>
-    </bean>
-    <bean id="userAction" class="action.UserAction">
-        <property name="userService" ref="userService"></property>
-    </bean>
-
-    <bean id="postDao" class="dao.impl.PostDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"></property>
-    </bean>
-    <bean id="postService" class="service.PostService">
-        <property name="postDao" ref="postDao"></property>
-    </bean>
-    <bean id="postAction" class="action.PostAction">
-        <property name="postService" ref="postService"></property>
-    </bean>
+    <import resource="classpath:user.xml" />
+    <import resource="classpath:post.xml" />
 </beans>

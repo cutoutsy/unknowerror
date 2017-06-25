@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 
 <!DOCTYPE html>
 <html>
@@ -13,9 +18,19 @@
     <title>问题题目</title>
     <script type="text/javascript">
         $(document).ready(function () {
-//            $(".post-text").firstElementChild.html($(".post-text").firstElementChild.text());
-            $(".post-text:first").html($(".post-text:first").text());
+            var postText = $(".post-text");
+            for(var index = 0; index < postText.length; index++){
+                var $onePostText = $(postText[index]);
+                $onePostText.html($onePostText.text());
+            }
+            $("#submit-button").click(function(){
+                $("#bodyvalue").attr("value", $("#wmd-preview").html());
+            });
         });
+        $("#submit-button").click(function(){
+            window.location.href = '/post/post_showOneQuestion.action?pid='+ <s:property value="onePost.id" />;
+        });
+
     </script>
 </head>
 <body class="question-page new-topbar">
@@ -82,7 +97,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="user-details">
-                                                        <a href="/users/7977178/quackbrick"><s:property value="#post.ownerDisplayName" /></a>
+                                                        <a href="/users/7977178/quackbrick"><s:property value="onepost.ownerDisplayName" /></a>
                                                         <div class="-flair">
                                                             <span class="reputation-score" title="reputation score" dir="ltr">1</span>
                                                             <span title="2 bronze badges">
@@ -112,7 +127,8 @@
                             </h2>
                         </div>
                     </div>
-                    <div id="answers-43994758" class="answers" data-answerid="43994758" itemscope itemtype="http://schema.org/Answer">
+                    <s:iterator value="answers" var="answer">
+                    <div id="answers-43994759" class="answers" data-answerid="43994758" itemscope itemtype="http://schema.org/Answer">
                         <table>
                             <tbody>
                             <tr>
@@ -128,9 +144,7 @@
                                     </div>
                                 </td>
                                 <td class="answercell">
-                                    <div class="post-text" itemprop="text">
-                                        <p>Just call it in the script;)</p>
-                                    </div>
+                                    <div class="post-text" itemprop="text"><s:property value="#answer.body" /></div>
                                     <table class="fw">
                                         <tbody>
                                         <tr>
@@ -174,9 +188,12 @@
                             </tbody>
                         </table>
                     </div>
+                    </s:iterator>
 
-                    <form id="post-form" action="#" method="post" class="post-form">
-                        <input type="hidden" id="post-id" value="43994650">
+                    <form id="post-form"  class="post-form" action="<%=path%>/posts/post_newQuestion.action" method="post">
+                        <input type="hidden" id="post-id" name="pid" value='<s:property value="onePost.id"/>' />
+                        <input type="hidden" name="postTypeId" value="2" />
+                        <input id="bodyvalue" type="hidden" name="body" />
                         <h2 class="space">你的回答</h2>
 
                         <div class="wmd-panel">
