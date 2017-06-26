@@ -30,4 +30,8 @@ public class PostService {
     public List<Post> getAnswerPostById(String pid) {
         return this.postDao.getAnswerPostById(pid);
     }
+
+    public int getTotalQuestions() {
+        return this.postDao.getTotalQuestions();
+    }
 }

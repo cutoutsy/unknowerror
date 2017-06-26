@@ -19,7 +19,7 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao{
 
     public List<Post> getNewPosts() {
         HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
-        List<Post> allPost = (List<Post>) hibernateTemplate.find("from Post");
+        List<Post> allPost = (List<Post>) hibernateTemplate.find("from Post order by creationDate desc");
         return allPost.stream().filter(post -> post.getPostTypeId()==1).collect(Collectors.toList());
     }
 
@@ -32,5 +32,11 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao{
     public List<Post> getAnswerPostById(String pid) {
         HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
         return (List<Post>) hibernateTemplate.find("from Post p where p.parentId = ?" , Integer.valueOf(pid));
+    }
+
+    @Override
+    public int getTotalQuestions() {
+        String hql = "select count(*) from Post as post where postTypeId = ?";
+        return Integer.valueOf(this.getHibernateTemplate().iterate(hql, 1).next().toString());
     }
 }

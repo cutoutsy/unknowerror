@@ -80,6 +80,10 @@ public class PostAction extends ActionSupport implements ModelDriven<Post>{
     //在首页显示最新问题
     public String showNewQuestion(){
         newPost = postService.getNewPost();
+        int totalQuestions = postService.getTotalQuestions();
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        session.setAttribute("totalQuestions", totalQuestions);
         return "showNewQuestion_success";
     }
 

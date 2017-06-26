@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.opensymphony.xwork2.util.*" %>
+<%@ page import="java.util.Date" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%
     String path = request.getContextPath();
@@ -12,7 +14,28 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
-
+        $(document).ready(function () {
+           var currentDate = new Date;
+           var currentSec = currentDate.getTime()/1000;
+           var relativeTime = $(".relativetime");
+           for(var index = 0; index < relativeTime.length; index++){
+               var $oneRelativeTime = $(relativeTime[index]);
+               var oneDate = $oneRelativeTime.attr("title");
+               oneDate = "20" + oneDate.substring(0, oneDate.length-4).replace(/-/g, "/");
+               var oneCurrentSec = new Date(oneDate).getTime()/1000;
+               var value = "";
+               if (currentSec - oneCurrentSec < 60){
+                   value = Math.floor(currentSec-oneCurrentSec).toString()+" 秒";
+               }else if(currentSec - oneCurrentSec>= 60 && currentSec - oneCurrentSec< 3600){
+                    value = Math.floor((currentSec-oneCurrentSec)/60).toString()+" 分";
+               }else if(currentSec - oneCurrentSec>=3600 && currentSec - oneCurrentSec < 3600*24){
+                   value = Math.floor((currentSec-oneCurrentSec)/3600).toString()+" 小时";
+               }else if(currentSec - oneCurrentSec >= 3600*24){
+                   value = Math.floor((currentSec-oneCurrentSec)/(3600*24)).toString()+" 天";
+               }
+               $oneRelativeTime.html(value+ " 前");
+            }
+        });
     </script>
     <link rel="stylesheet" type="text/css" href="/css/all.css">
     <title>Unknow Error</title>
@@ -37,37 +60,6 @@
             </div>
             <div id="qlist-wrapper">
                 <div id="question-mini-list">
-                    <div class="question-summary narrow" id="question-summary-36112979">
-                        <div onclick="window.location.href='./single_question.jsp'" class="cp">
-                            <div class="votes">
-                                <div class="mini-counts"><span title="0 votes">0</span></div>
-                                <div>votes</div>
-                            </div>
-                            <div class="status unanswered">
-                                <div class="mini-counts"><span title="0 answers">0</span></div>
-                                <div>answers</div>
-                            </div>
-                            <div class="views">
-                                <div class="mini-counts"><span title="3 views">3</span></div>
-                                <div>views</div>
-                            </div>
-                        </div>
-                        <div class="summary">
-                            <h3><a href="./single_question.jsp" class="question-hyperlink">Segregate front end from back end</a> </h3>
-                            <div class="tags">
-                                <a href="./php" class="post-tag" title rel="tag">php</a>
-                                <a href="./php" class="post-tag" title rel="tag">jquery</a>
-                                <a href="./php" class="post-tag" title rel="tag">html</a>
-                                <a href="./php" class="post-tag" title rel="tag">design</a>
-                                <a href="./php" class="post-tag" title rel="tag">architecture</a>
-                            </div>
-                            <div class="started">
-                                <a href="#" class="started-link">asked<span title="2017-06-11 12:45:49Z" class="relativetime">1 min ago</span></a>
-                                <a href="/users/">user3473535</a>
-                                <span class="reputation-score" title="reputation score" dir="1tr">1</span>
-                            </div>
-                        </div>
-                    </div>
                     <s:iterator value="newPost" var="post">
                         <div class="question-summary narrow" id="question-summary-36112979">
                             <div onclick="window.location.href='/post/post_showOneQuestion.action?pid=<s:property value="#post.id" />'" class="cp">
@@ -85,16 +77,18 @@
                                 </div>
                             </div>
                             <div class="summary">
-                                <h3><a href="./single_question.jsp" class="question-hyperlink"><s:property value="#post.title" /></a> </h3>
+                                <h3><a href='/post/post_showOneQuestion.action?pid=<s:property value="#post.id" />' class="question-hyperlink"><s:property value="#post.title" /></a> </h3>
                                 <div class="tags">
                                     <a href="./php" class="post-tag" title rel="tag"><s:property value="#post.tags" /></a>
+                                    <!--
                                     <a href="./php" class="post-tag" title rel="tag">jquery</a>
                                     <a href="./php" class="post-tag" title rel="tag">html</a>
                                     <a href="./php" class="post-tag" title rel="tag">design</a>
                                     <a href="./php" class="post-tag" title rel="tag">architecture</a>
+                                    -->
                                 </div>
                                 <div class="started">
-                                    <a href="#" class="started-link">asked<span title="2017-06-11 12:45:49Z" class="relativetime">1 min ago</span></a>
+                                    <a href="#" class="started-link">提问&nbsp;<span title="<s:property value='#post.creationDate' />" class="relativetime"></span></a>
                                     <a href="/users/"><s:property value="#post.ownerDisplayName" /></a>
                                     <span class="reputation-score" title="reputation score" dir="1tr">1</span>
                                 </div>
@@ -107,15 +101,15 @@
         <div id="sidebar" role="complementary" aria-label="sidebar">
             <div class="module" id="questions-count">
                 <div class="-details">
-                    <div class="summarycount al">13,683,883</div>
-                    <p>questions</p>
+                    <div class="summarycount al"><s:property value="#session.totalQuestions" /></div>
+                    <p>问题</p>
                 </div>
                 <div class="aside-cta" role="navigation" aria-label="ask new question">
                     <a href="/ask_question.jsp" class="btn-outlined">提问</a>
                 </div>
             </div>
             <div class="module js-gps-related-tags" id="related-tags">
-                <h4 id="h-related-tags">Related Tags</h4>
+                <h4 id="h-related-tags">相关标签</h4>
                 <div>
                     <a href="#" class="post-tag no-tag-menu js-gps-track
 						">javascript</a>&nbsp;
@@ -142,10 +136,10 @@
                 </div>
             </div>
             <div id="hot-network-questions" class="module tex2jav_ignore">
-                <h4><a href="#" class="js-gps-track">Hot Network Questions</a></h4>
+                <h4><a href="#" class="js-gps-track">网络热门问题</a></h4>
                 <ul>
                     <li><div class="favicon favicon-tex"></div>
-                        <a href="#" class="js-gps-track">How to change default float options for figures</a>
+                        <a href="#" class="js-gps-track">关于Js根据字符串生成Date对象</a>
                     </li>
                 </ul>
             </div>
