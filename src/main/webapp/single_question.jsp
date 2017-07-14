@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <s:iterator value="answers" var="answer">
-                    <div id="answers-43994759" class="answers" data-answerid="43994758" itemscope itemtype="http://schema.org/Answer">
+                    <div id="answers-43994759" class="answer" data-answerid="43994758" itemscope itemtype="http://schema.org/Answer">
                         <table>
                             <tbody>
                             <tr>
