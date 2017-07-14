@@ -68,7 +68,7 @@
                                     <div>votes</div>
                                 </div>
                                 <div class="status unanswered">
-                                    <div class="mini-counts"><span title="0 answers">0</span></div>
+                                    <div class="mini-counts"><span title="0 answers"><s:property value="#post.answerCount" /></span></div>
                                     <div>answers</div>
                                 </div>
                                 <div class="views">
