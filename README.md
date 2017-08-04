@@ -14,5 +14,6 @@ Step3.  安装IntelliJ IDEA，导入项目（maven）
 
 Step4.  配置tomcat服务器
 
-### 部署网站
-TO DO...
+
+### TO DO...
+1. 标签后端处理入库
