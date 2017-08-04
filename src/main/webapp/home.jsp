@@ -34,6 +34,16 @@
                    value = Math.floor((currentSec-oneCurrentSec)/(3600*24)).toString()+" 天";
                }
                $oneRelativeTime.html(value+ " 前");
+           }
+
+            var allposttags = $(".post-tags");
+            for(var index = 0; index < allposttags.length; index++){
+                var $oneposttags = $(allposttags[index]);
+                var tagarray = allposttags[index].value.split(",");
+                for(var index1 = 0; index1 < tagarray.length; index1++){
+                    var onetag = "<a href=\"./" + tagarray[index1] + "\" class=\"post-tag\" title rel=\"tag\">" + tagarray[index1] + "</a>";
+                    $oneposttags.before(onetag);
+                }
             }
         });
     </script>
@@ -79,13 +89,7 @@
                             <div class="summary">
                                 <h3><a href='/post/post_showOneQuestion.action?pid=<s:property value="#post.id" />' class="question-hyperlink"><s:property value="#post.title" /></a> </h3>
                                 <div class="tags">
-                                    <a href="./php" class="post-tag" title rel="tag"><s:property value="#post.tags" /></a>
-                                    <!--
-                                    <a href="./php" class="post-tag" title rel="tag">jquery</a>
-                                    <a href="./php" class="post-tag" title rel="tag">html</a>
-                                    <a href="./php" class="post-tag" title rel="tag">design</a>
-                                    <a href="./php" class="post-tag" title rel="tag">architecture</a>
-                                    -->
+                                    <input type="hidden" class="post-tags" value="<s:property value='#post.tags' />">
                                 </div>
                                 <div class="started">
                                     <a href="#" class="started-link">提问&nbsp;<span title="<s:property value='#post.creationDate' />" class="relativetime"></span></a>

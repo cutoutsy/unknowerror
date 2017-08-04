@@ -26,6 +26,16 @@
             $("#submit-button").click(function(){
                 $("#bodyvalue").attr("value", $("#wmd-preview").html());
             });
+
+            var allposttags = $(".post-tags");
+            for(var index = 0; index < allposttags.length; index++){
+                var $oneposttags = $(allposttags[index]);
+                var tagarray = allposttags[index].value.split(",");
+                for(var index1 = 0; index1 < tagarray.length; index1++){
+                    var onetag = "<a href=\"./" + tagarray[index1] + "\" class=\"post-tag\" title rel=\"tag\">" + tagarray[index1] + "</a>";
+                    $oneposttags.before(onetag);
+                }
+            }
         });
         $("#submit-button").click(function(){
             window.location.href = '/post/post_showOneQuestion.action?pid='+ <s:property value="onePost.id" />;
@@ -71,9 +81,7 @@
                                 <div>
                                     <div class="post-text" itemprop="text"><s:property value="onePost.body" /></div>
                                     <div class="post-taglist">
-                                        <a href="/question/tagged/javascript" class="post-tag js-gps-track" title="show questions tagged 'javascript'" rel="tag">javascript</a>
-                                        <a href="/question/tagged/javascript" class="post-tag js-gps-track" title="show questions tagged 'javascript'" rel="tag">jquery</a>
-                                        <a href="/question/tagged/javascript" class="post-tag js-gps-track" title="show questions tagged 'javascript'" rel="tag">ajax</a>
+                                        <input type="hidden" class="post-tags" value="<s:property value='onePost.tags' />">
                                     </div>
                                     <table class="fw">
                                         <tbody>
