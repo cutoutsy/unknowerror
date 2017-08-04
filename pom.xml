@@ -99,6 +99,25 @@
       -->
   </dependencies>
   <build>
-    <finalName>ssh</finalName>
+      <sourceDirectory>src/main/java/</sourceDirectory>
+      <resources>
+          <resource>
+              <directory>src/main/java/</directory>
+              <includes>
+                  <include>**/*.xml</include>
+              </includes>
+          </resource>
+      </resources>
+      <finalName>unknowerror</finalName>
+      <plugins>
+          <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <target>1.5</target>
+                  <source>1.5</source>
+                  <encoding>UTF-8</encoding>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 </project>
