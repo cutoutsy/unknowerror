@@ -82,7 +82,7 @@
                                     <div>answers</div>
                                 </div>
                                 <div class="views">
-                                    <div class="mini-counts"><span title="3 views">3</span></div>
+                                    <div class="mini-counts"><span title="3 views"><s:property value="#post.viewCount" /></span></div>
                                     <div>views</div>
                                 </div>
                             </div>

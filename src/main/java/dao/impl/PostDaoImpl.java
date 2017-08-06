@@ -41,7 +41,10 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao{
 
     public Post getPostById(String pid) {
         HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
-        return hibernateTemplate.get(Post.class, Integer.valueOf(pid));
+        Post post = hibernateTemplate.get(Post.class, Integer.valueOf(pid));
+        post.setViewCount(post.getViewCount()+1);
+        hibernateTemplate.save(post);
+        return post;
     }
 
     @Override
