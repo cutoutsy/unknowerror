@@ -15,5 +15,16 @@ Step3.  安装IntelliJ IDEA，导入项目（maven）
 Step4.  配置tomcat服务器
 
 
+### 网站logo
+本网站LOGO由http://www.simwebsol.com/imagetool/在线生成
+
+Font: Ubuntu
+
+Fondcolor: black
+
+Background: rgb(250,250,250)
+
+Special Effect
+
 ### TO DO...
 

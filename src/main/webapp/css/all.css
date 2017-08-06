@@ -161,8 +161,10 @@ textarea{
     width: 150px;
     margin-top: 4px;
     margin-left: 0;
-    background-image: url(https://cdn.sstatic.net/Sites/stackoverflow/img/sprites.svg?v=d689de80c4e2);
-    background-position: 0 -500px;
+    /*background-image: url(https://cdn.sstatic.net/Sites/stackoverflow/img/sprites.svg?v=d689de80c4e2);*/
+    background-image: url(/image/logo.jpg);
+    background-size:150px 30px;
+    background-repeat: no-repeat;
 }
 
 .so-header .navigation .-list{
