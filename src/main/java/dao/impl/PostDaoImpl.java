@@ -14,14 +14,16 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao{
 
     public boolean saveQuestion(Post post) {
         HibernateTemplate hibernateTemplate = this.getHibernateTemplate();
-        String[] tags = post.getTags().split(",|，");
-        for (String tag : tags){
-            Tag tempTag = new Tag();
-            tempTag.setTagName(tag);
-            List<Tag> tagList = (List<Tag>)hibernateTemplate.find("from Tag where tagName = ?", tag);
-            int count = tagList.size() > 0 ? tagList.get(0).getCount()+1 : 1;
-            tempTag.setCount(count);
-            hibernateTemplate.save(tempTag);
+        if(post.getPostTypeId() == 1) {
+            String[] tags = post.getTags().split(",|，");
+            for (String tag : tags) {
+                Tag tempTag = new Tag();
+                tempTag.setTagName(tag);
+                List<Tag> tagList = (List<Tag>) hibernateTemplate.find("from Tag where tagName = ?", tag);
+                int count = tagList.size() > 0 ? tagList.get(0).getCount() + 1 : 1;
+                tempTag.setCount(count);
+                hibernateTemplate.save(tempTag);
+            }
         }
         hibernateTemplate.save(post);
         return true;

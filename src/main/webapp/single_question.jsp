@@ -130,8 +130,8 @@
                     <div id="answers-header">
                         <div class="subheader answers-subheader">
                             <h2>
-                                1 Answer
-                                <span style="display: none" itemprop="answersCount">1</span>
+                                <s:property value="onePost.answerCount" /> 回答
+                                <span style="display: none" itemprop="answersCount"><s:property value="onePost.answerCount" /></span>
                             </h2>
                         </div>
                     </div>
