@@ -30,7 +30,7 @@
             var allposttags = $(".post-tags");
             for(var index = 0; index < allposttags.length; index++){
                 var $oneposttags = $(allposttags[index]);
-                var tagarray = allposttags[index].value.split(",");
+                var tagarray = allposttags[index].value.split(/[,，]/);
                 for(var index1 = 0; index1 < tagarray.length; index1++){
                     var onetag = "<a href=\"./" + tagarray[index1] + "\" class=\"post-tag\" title rel=\"tag\">" + tagarray[index1] + "</a>";
                     $oneposttags.before(onetag);

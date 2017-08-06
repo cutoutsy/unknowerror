@@ -15,5 +15,6 @@
         <mapping resource="hbm/User.hbm.xml"/>
         <mapping resource="hbm/PostType.hbm.xml"/>
         <mapping resource="hbm/Post.hbm.xml"/>
+        <mapping resource="hbm/Tag.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
