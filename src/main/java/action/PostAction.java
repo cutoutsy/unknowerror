@@ -96,4 +96,11 @@ public class PostAction extends ActionSupport implements ModelDriven<Post>{
         return "showOneQuestion_success";
     }
 
+    //保存投票数量
+    public void saveVoteCount(){
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String voidId = request.getParameter("pid");    //vote关联的postId,问题或者答案
+        int voteCount = Integer.valueOf(request.getParameter("voteCount"));
+        postService.saveVoteCount(voidId, voteCount);   //保存到redis里
+    }
 }

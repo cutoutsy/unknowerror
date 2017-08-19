@@ -34,4 +34,8 @@ public class PostService {
     public int getTotalQuestions() {
         return this.postDao.getTotalQuestions();
     }
+
+    public void saveVoteCount(String voidId, int voteCount) {
+        this.postDao.saveVoteCount(voidId,voteCount);
+    }
 }

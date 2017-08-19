@@ -26,7 +26,7 @@ public class Post {
     private String tags;
     private int answerCount;    //问题答案数目
     private int commentCount;   //问题评论数目
-    private int favoriteCount;
+    private int favoriteCount;  //问题喜欢的数目
     private Timestamp closedDate;
     private Timestamp communityOwnedDate;
 

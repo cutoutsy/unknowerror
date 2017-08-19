@@ -15,4 +15,6 @@ public interface PostDao {
     List<Post> getAnswerPostById(String pid);
 
     int getTotalQuestions();
+
+    void saveVoteCount(String voidId, int voteCount);
 }

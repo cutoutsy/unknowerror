@@ -59,6 +59,12 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao{
         return Integer.valueOf(this.getHibernateTemplate().iterate(hql, 1).next().toString());
     }
 
+    //保存投票数量
+    @Override
+    public void saveVoteCount(String voidId, int voteCount) {
+        //使用redis实现
+    }
+
     private int getAnswesCountById(int parentId){
         String hql = "select count(*) from Post as post where parentId = ?";
         return Integer.valueOf(this.getHibernateTemplate().iterate(hql, parentId).next().toString());

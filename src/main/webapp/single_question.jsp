@@ -275,3 +275,20 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    //投票处理
+    $(".vote-up-off").click(function(){
+        var votecount = parseInt($(this).siblings("span").text()) + 1;
+        var pid = $(this).siblings("input").val();
+        //alert(pid);
+        $(this).siblings("span").text(votecount);
+        $.post("/post/post_saveVoteCount.action",
+            {
+                pid:pid,
+                voteCount:votecount
+            },
+            function(data,status){
+                alert("数据: \n" + data + "\n状态: " + status);
+            });
+    });
+</script>
