@@ -118,6 +118,28 @@
                   <encoding>UTF-8</encoding>
               </configuration>
           </plugin>
+          <plugin>
+              <artifactId>maven-war-plugin</artifactId>
+              <version>3.0.0</version>
+              <configuration>
+              <webResources>
+                  <resource>
+                      <!-- 需要包含进来的目录-->
+                      <directory>src/main/resources/</directory>
+                      <!--打包的目标目录  -->
+                      <targetPath>WEB-INF/classes</targetPath>
+                  </resource>
+                  <!-- 不打包test目录下的文件 -->
+                  <resource>
+                      <directory>src/test</directory>
+                      <excludes>
+                          <exclude>*</exclude>
+                      </excludes>
+                  </resource>
+              </webResources>
+              <failOnMissingWebXml>false</failOnMissingWebXml>
+              </configuration>
+          </plugin>
       </plugins>
   </build>
 </project>
