@@ -23,4 +23,8 @@ public class UserService {
     public boolean logup(User user){
         return userDao.logupUser(user);
     }
+
+    public User findUserById(Long id) {
+        return userDao.findUserById(id);
+    }
 }

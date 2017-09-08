@@ -7,4 +7,6 @@ public interface UserDao {
     public User loginUser(User user);
 
     boolean logupUser(User user);
+
+    public User findUserById(Long id);
 }

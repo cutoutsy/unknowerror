@@ -38,4 +38,10 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
         return true;
     }
 
+    public User findUserById(Long id){
+        User user = new User();
+        user.setEmailHash("11111");
+        return user;
+    }
+
 }
