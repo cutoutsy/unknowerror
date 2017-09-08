@@ -1,6 +1,13 @@
 # unknowerror
 一个使用SSH框架开发的类似stackoverflow的编程问答网站。
 
+# 架构
+前端采用layui
+
+后端采用Spring Boot
+
+数据库采用Mysql
+
 ### 开发环境搭建
 Step1.  安装Mysql数据库，并创建数据库（unknowerror）
 
